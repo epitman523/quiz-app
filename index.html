@@ -16,32 +16,35 @@
     <main>
         <div class="container">
             <section class="live">
-                <p class="question">Question</p>
+                <p class="question js-group-1">Question</p>
                 <form class="answer">
-                    <fieldset class="radio">
+                    <fieldset class="radio js-group-1">
                         <legend>Answers</legend>
-                        <p> <input type="radio" name="size" id="size_1" value="small"> <label for="size_1">Small</label>
+                        <p> <input type="radio" name="option" id="option_1" value="option-1"> <label
+                                for="option_1">Option</label>
                         </p>
-                        <p> <input type="radio" name="size" id="size_2" value="medium"> <label
-                                for="size_2">Medium</label> </p>
-                        <p> <input type="radio" name="size" id="size_3" value="large"> <label for="size_3">Large</label>
+                        <p> <input type="radio" name="option" id="option_2" value="option-2"> <label
+                                for="option_2">Option</label>
+                        </p>
+                        <p> <input type="radio" name="option" id="option_3" value="option-3"> <label
+                                for="option_3">Option</label>
                         </p>
                     </fieldset>
-                    <fieldset class="result">
+                    <fieldset class="result js-group-2">
                         <legend>Correct / Wrong</legend>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
                             Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
                     </fieldset>
-                    <fieldset class="final">
+                    <fieldset class="final js-group-3">
                         <legend>Final score</legend>
                         <p>You got</p>
                         <p class="final-score"></p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
                             Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
                     </fieldset>
-                    <button type="submit" class="submit">Submit</button>
-                    <button type="submit" class="next">Next Question</button>
-                    <button type="submit" class="restart">Retake the quiz</button>
+                    <button type="submit" class="submit js-group-1">Submit</button>
+                    <button type="submit" class="next js-group-2">Next Question</button>
+                    <button type="submit" class="restart js-group-3">Retake the quiz</button>
                 </form>
             </section>
             <section class="score">
@@ -59,6 +62,9 @@
         </div>
     </main>
     <footer></footer>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
