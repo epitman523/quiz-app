@@ -111,6 +111,11 @@ main {
 .live .js-group-3 {
     display: none;
 }
+.live .js-group-1.current, 
+.live .js-group-2.current, 
+.live .js-group-3.current {
+    display: block;
+}
 @media screen and (min-width: 768px) {}
 @media screen and (min-width: 992px) {}
 @media screen and (min-width: 1200px) {}
