@@ -66,7 +66,11 @@ button {
     width: 100%;
     padding: 1rem 4rem;
 }
-@media screen and (min-width: 768px) {}
+@media screen and (min-width: 768px) {
+    button {
+        width: 20rem;
+    }
+}
 @media screen and (min-width: 992px) {}
 @media screen and (min-width: 1200px) {}
 /* -- Header --  */
@@ -104,7 +108,7 @@ main {
     border-bottom: 2px solid #ccc;
 }
 .live form button {
-    margin: 2rem 0;
+    margin: 2rem auto;
 }
 .live .js-group-1, 
 .live .js-group-2, 
