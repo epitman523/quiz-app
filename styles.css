@@ -125,14 +125,14 @@ main {
 .live form button {
     margin: 2rem auto;
 }
-.live .js-group-1, 
-.live .js-group-2, 
-.live .js-group-3 {
+.live .landing, 
+.live .question, 
+.live .results {
     display: none;
 }
-.live .js-group-1.current, 
-.live .js-group-2.current, 
-.live .js-group-3.current {
+.live .landing.current, 
+.live .question.current, 
+.live .results.current {
     display: block;
 }
 @media screen and (min-width: 768px) {}

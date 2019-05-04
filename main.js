@@ -1,43 +1,38 @@
-//Goal: Only show single fieldset/button at a time Button toggles view on next pair
-
-//1. Show first question on doc ready
-//target .js-group-1 and toggle class .current
-//2. When group-1 btn clicked --> show next pair
-//on click toggle class on current and on next pair
-
 'use strict';
-const $group1 = $('.js-group-1');
-const $group2 = $('.js-group-2');
-const $group3 = $('.js-group-3');
+// 1. Create data to work with
+// 2. Render start screen with content
+// a. Check the screen
+// 3. Wnen user clicks start button, show question 1
+// 4. When user selects answer, enable submit
+// 5. User clicks submit, show next question
+// 6. After last question, show results screen
 
-function renderGroup1() {
-    $group1.addClass('current');
+const screens = [
+    { //screens[0]
+        screen: 1,
+        type: 'landing',
+        question: ' ',
+        answers: [],
+        correct: ' ',
+        text1: 'When you live in the midwest, you learn quickly that severe weather can happen at any time. Most know how to protect themselves in their own homes, but what about while in public or traveling?',
+        text2: ' ',
+        buttonType: 'button',
+        buttonText: 'Begin Quiz'
+    },
+];
+
+function renderScreen() {
+    //Rendering screen to DOM, starting with screen[0]
+    $()
+    console.log('renderScreen ran');
 }
-function submitBtn() {
-    $('.live').on('click', 'button.js-group-1', function (event) {
-        event.preventDefault();
-        $('.js-group-1.current').removeClass('current');
-        $group2.addClass('current');
-    })
+function beginQuiz() {
+    //Shows question 1 on click
+    console.log('beginQuiz ran');
 }
-function nextBtn() {
-    $('.live').on('click', 'button.js-group-2', function (event) {
-        event.preventDefault();
-        $('.js-group-2.current').removeClass('current');
-        $group3.addClass('current');
-    })
+
+function runQuizApp() {
+    renderScreen();
+    beginQuiz();
 }
-function restartBtn() {
-    $('.live').on('click', 'button.js-group-3', function (event) {
-        event.preventDefault();
-        $('.js-group-3.current').removeClass('current');
-        renderGroup1();
-    })
-}
-function handleQuizApp() {
-    renderGroup1();
-    submitBtn();
-    nextBtn();
-    restartBtn();
-};
-$(handleQuizApp);
+$(runQuizApp);
