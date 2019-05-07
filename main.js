@@ -54,7 +54,7 @@ const questions = [
     {//questions[2]
         id: 'question_3',
         text: 'Question 3',
-        type: 'checkbox',
+        type: 'radio',
         answers: [
             {//questions[2].answers[0]
                 id: 'answer1-3',
@@ -73,31 +73,13 @@ const questions = [
                 text: 'Answer 3',
                 value: 'C',
                 correct: false
-            },
-            {//questions[2].answers[3]
-                id: 'answer4-3',
-                text: 'Answer 4',
-                value: 'D',
-                correct: false
-            },
-            {//questions[2].answers[4]
-                id: 'answer5-3',
-                text: 'Answer 5',
-                value: 'E',
-                correct: false
-            },
-            {//questions[2].answers[5]
-                id: 'answer6-3',
-                text: 'Answer 6',
-                value: 'F',
-                correct: false
             }
         ]
     },
     {//questions[3]
         id: 'question_4',
         text: 'Question 4',
-        type: 'checkbox',
+        type: 'radio',
         answers: [
             {//questions[3].answers[0]
                 id: 'answer1-4',
@@ -116,31 +98,13 @@ const questions = [
                 text: 'Answer 3',
                 value: 'C',
                 correct: false
-            },
-            {//questions[3].answers[3]
-                id: 'answer4-4',
-                text: 'Answer 4',
-                value: 'D',
-                correct: false
-            },
-            {//questions[3].answers[4]
-                id: 'answer5-4',
-                text: 'Answer 5',
-                value: 'E',
-                correct: false
-            },
-            {//questions[3].answers[5]
-                id: 'answer6-4',
-                text: 'Answer 6',
-                value: 'F',
-                correct: false
             }
         ]
     },
     {//questions[4]
         id: 'question_5',
         text: 'Question 5',
-        type: 'checkbox',
+        type: 'radio',
         answers: [
             {//questions[4].answers[0]
                 id: 'answer1-5',
@@ -158,24 +122,6 @@ const questions = [
                 id: 'answer3-5',
                 text: 'Answer 3',
                 value: 'C',
-                correct: false
-            },
-            {//questions[4].answers[3]
-                id: 'answer4-5',
-                text: 'Answer 4',
-                value: 'D',
-                correct: false
-            },
-            {//questions[4].answers[4]
-                id: 'answer5-5',
-                text: 'Answer 5',
-                value: 'E',
-                correct: false
-            },
-            {//questions[4].answers[5]
-                id: 'answer6-5',
-                text: 'Answer 6',
-                value: 'F',
                 correct: false
             }
         ]
@@ -206,57 +152,31 @@ const questions = [
         ]
     }
 ];
-const correctAnswers = ['A'];
+const correctAnswers = ['A', 'B', 'C', 'A', 'B', 'C'];
 const htmlStrings = questions.map(item => buildString(item));
 let counter = 0;
 
 function buildString(item) {
-    if (item.type === 'radio') {
-        return `
-        <form id="${item.id}">
-            <h2>${item.text}</h2>
-            <p>
-                <input type="${item.type}" id="${item.answers[0].id}" name="answers" value="${item.answers[0].value}" /><label for="${item.answers[0].id}">${item.answers[0].text}</label>
-            </p>
-            <p>
-                <input type="${item.type}" id="${item.answers[1].id}" name="answers" value="${item.answers[1].value}" /><label for="${item.answers[1].id}">${item.answers[1].text}</label>
-            </p>
-            <p>
-                <input type="${item.type}" id="${item.answers[2].id}" name="answers" value="${item.answers[2].value}" /><label for="${item.answers[2].id}">${item.answers[2].text}</label>
-            </p>
-            <button type="submit" class="js-submit current" disabled>Submit</button>
-        </form>
-        <div class="response">
-            <p class="verdict"></p>
-            <p class="info"></p>
-            <button type="button" class="js-next">Next</button>
-        </div>
-    `;
-    }
     return `
-    <form id="${item.id}">
-        <h2>${item.text}</h2>
-        <p>
-            <input type="${item.type}" id="${item.answers[0].id}" name="answers" value="${item.answers[0].value}" /><label for="${item.answers[0].id}">${item.answers[0].text}</label>
-        </p>
-        <p>
-            <input type="${item.type}" id="${item.answers[1].id}" name="answers" value="${item.answers[1].value}" /><label for="${item.answers[1].id}">${item.answers[1].text}</label>
-        </p>
-        <p>
-            <input type="${item.type}" id="${item.answers[2].id}" name="answers" value="${item.answers[2].value}" /><label for="${item.answers[2].id}">${item.answers[2].text}</label>
-        </p>
-        <p>
-            <input type="${item.type}" id="${item.answers[3].id}" name="answers" value="${item.answers[3].value}" /><label for="${item.answers[3].id}">${item.answers[3].text}</label>
-        </p>
-        <p>
-            <input type="${item.type}" id="${item.answers[4].id}" name="answers" value="${item.answers[4].value}" /><label for="${item.answers[4].id}">${item.answers[4].text}</label>
-        </p>
-        <p>
-            <input type="${item.type}" id="${item.answers[5].id}" name="answers" value="${item.answers[5].value}" /><label for="${item.answers[5].id}">${item.answers[5].text}</label>
-        </p>
-        <button type="submit" class="js-submit" disabled>Submit</button>
-    </form>
-    `;
+            <form id="${item.id}">
+                <h2>${item.text}</h2>
+                <p>
+                    <input type="${item.type}" id="${item.answers[0].id}" name="answers" value="${item.answers[0].value}" /><label for="${item.answers[0].id}">${item.answers[0].text}</label>
+                </p>
+                <p>
+                    <input type="${item.type}" id="${item.answers[1].id}" name="answers" value="${item.answers[1].value}" /><label for="${item.answers[1].id}">${item.answers[1].text}</label>
+                </p>
+                <p>
+                    <input type="${item.type}" id="${item.answers[2].id}" name="answers" value="${item.answers[2].value}" /><label for="${item.answers[2].id}">${item.answers[2].text}</label>
+                </p>
+                <button type="submit" class="js-submit current" disabled>Submit</button>
+            </form>
+            <div class="response">
+                <p class="verdict"></p>
+                <p class="info"></p>
+                <button type="button" class="js-next">Next</button>
+            </div>
+        `;
 }
 
 //Start Quiz
@@ -281,12 +201,15 @@ function handleSubmitToggle() {
         $(event.currentTarget).parents('form').find('button.js-submit').prop('disabled', false);
     })
 }
+function handleResponseToggle() {
+    $('button.js-submit.current').removeClass('current')
+    $('div.response').addClass('current');
+}
 function handleSubmitBtn() {
     container.on('click', 'button.js-submit', event => {
         event.preventDefault();
         checkAnswer(event);
         handleResponseToggle();
-
     });
 }
 function checkAnswer(event) {
@@ -299,19 +222,26 @@ function checkAnswer(event) {
     }
 }
 function correctAnswerResponse() {
-    console.log('correctAnswerResponse ran');
+    $('p.verdict').text('Correct');
 }
 function wrongAnswerResponse() {
-    console.log('wrongAnswerResponse ran');
+    $('p.verdict').text('Sorry, you answered incorrectly');
 }
-function handleResponseToggle() {
-    $('button.js-submit.current').removeClass('current')
-    $('div.response').addClass('current');
+
+//Next Button Functions
+function handleNextBtn() {
+    container.on('click', 'button.js-next', event => {
+        counter += 1;
+        renderQuestion(htmlStrings[counter]);
+    });
 }
+
+
 function runQuizApp() {
     beginQuiz();
     handleSubmitToggle();
     handleSubmitBtn();
+    handleNextBtn();
 
 }
 $(runQuizApp);
