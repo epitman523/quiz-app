@@ -2,6 +2,7 @@
 
 
 const container = $('section.live');
+const questionContainer = $('section.live div.question');
 const submitBtn = $('section.live div.question form button.js-submit');
 const questions = [
     {//questions[0]
@@ -155,6 +156,7 @@ const questions = [
 const correctAnswers = ['A', 'B', 'C', 'A', 'B', 'C'];
 const htmlStrings = questions.map(item => buildString(item));
 let counter = 0;
+let score = 0;
 
 function buildString(item) {
     return `
@@ -184,7 +186,7 @@ function beginQuiz() {
     container.on('click', '.landing > button', event => {
         $('.landing.current').removeClass('current');
         $('.question').addClass('current');
-        container.html(htmlStrings[0]);
+        questionContainer.html(htmlStrings[0]);
     });
 }
 
@@ -192,7 +194,7 @@ function beginQuiz() {
 function renderQuestion() {
     //Render the html string to container in the DOM
     console.log('renderQuestion ran');
-    container.html(htmlStrings[counter]);
+    questionContainer.html(htmlStrings[counter]);
 
 }
 //Submit Functions
@@ -217,6 +219,8 @@ function checkAnswer(event) {
     let rightAnswer = correctAnswers[counter];
     if (userAnswer === rightAnswer) {
         correctAnswerResponse();
+        score += 1;
+        renderScore();
     } else {
         wrongAnswerResponse();
     }
@@ -232,16 +236,48 @@ function wrongAnswerResponse() {
 function handleNextBtn() {
     container.on('click', 'button.js-next', event => {
         counter += 1;
-        renderQuestion(htmlStrings[counter]);
+        if (counter === 6) {
+            renderResults();
+        } else {
+            renderQuestion(htmlStrings[counter]);
+        }
     });
 }
 
+//Results screen
+function renderResults() {
+    $('div.question.current').removeClass('current');
+    $('div.results').addClass('current');
+}
+
+//Restart Button Functions
+function handleRestartButton() {
+    container.on('click', 'button.js-restart', function () {
+        location.reload();
+    });
+}
+
+//Score Section Functions
+function renderScore() {
+    $('span.js-score').html(score);
+    $('span.js-total').html(htmlStrings.length)
+}
+function renderProDots() {
+    const dotCount = htmlStrings.length;
+    let i = 0;
+    while (i < dotCount) {
+        $('ul.progress').append('<li></li>');
+        i++;
+    }
+}
 
 function runQuizApp() {
     beginQuiz();
     handleSubmitToggle();
     handleSubmitBtn();
     handleNextBtn();
-
+    handleRestartButton();
+    renderProDots();
+    renderScore();
 }
 $(runQuizApp);
