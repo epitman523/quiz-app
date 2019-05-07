@@ -127,12 +127,16 @@ main {
 }
 .live .landing, 
 .live .question, 
-.live .results {
+.live .results, 
+.response, 
+.js-submit {
     display: none;
 }
 .live .landing.current, 
 .live .question.current, 
-.live .results.current {
+.live .results.current,
+.response.current, 
+.js-submit.current {
     display: block;
 }
 @media screen and (min-width: 768px) {}

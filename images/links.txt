@@ -9,3 +9,12 @@ storm4.jpg - https://www.vox.com/science-and-health/2017/8/30/16214212/harvey-ex
 storm5.jpg - https://www.weather.gov/ilx/severe-prep
 
 storms6.jpg - https://www.pbs.org/wgbh/nova/video/decoding-the-weather-machine/google drive
+
+
+<p>
+            <input type="${question.type}" name="answer" id="${question.answer[1].id}" value="${question.answer[1].value}"><label for="${question.answer[1].id}">${question.answer[1].text}</label>
+        </p>
+        <p>
+            <input type="${question.type}" name="answer" id="${question.answer[2].id}" value="${question.answer[2].value}"><label for="${question.answer[2].id}">${question.answer[2].text}</label>
+        </p>
+        <button type="submit" class="submit">Submit</button>

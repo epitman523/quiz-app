@@ -1,40 +1,33 @@
 'use strict';
-// 1. Create data to work with
-// 2. Render start screen with content
-// a. Check the screen
-// 3. Wnen user clicks start button, show question 1
-// 4. When user selects answer, enable submit
-// 5. User clicks submit, show next question
-// 6. After last question, show results screen
 
+
+const container = $('section.live');
+const submitBtn = $('section.live div.question form button.js-submit');
 const questions = [
     {//questions[0]
-        id: 'question_1'
+        id: 'question_1',
         text: 'Question 1',
         type: 'radio',
         answers: [
             {//questions[0].answers[0]
                 id: 'answer1-1',
                 text: 'Answer 1',
-                value: 'A',
-                correct: true
+                value: 'A'
             },
             {//questions[0].answers[1]
                 id: 'answer2-1',
                 text: 'Answer 2',
-                value: 'B',
-                correct: false
+                value: 'B'
             },
             {//questions[0].answers[2]
                 id: 'answer3-1',
                 text: 'Answer 3',
-                value: 'C',
-                correct: false
+                value: 'C'
             }
         ]
     },
     {//questions[1]
-        id: 'question_2'
+        id: 'question_2',
         text: 'Question 2',
         type: 'radio',
         answers: [
@@ -59,6 +52,7 @@ const questions = [
         ]
     },
     {//questions[2]
+        id: 'question_3',
         text: 'Question 3',
         type: 'checkbox',
         answers: [
@@ -83,81 +77,128 @@ const questions = [
             {//questions[2].answers[3]
                 id: 'answer4-3',
                 text: 'Answer 4',
-                value: 'A',
+                value: 'D',
                 correct: false
             },
             {//questions[2].answers[4]
                 id: 'answer5-3',
                 text: 'Answer 5',
-                value: 'B',
+                value: 'E',
                 correct: false
             },
             {//questions[2].answers[5]
                 id: 'answer6-3',
                 text: 'Answer 6',
-                value: 'C',
+                value: 'F',
                 correct: false
             }
         ]
     },
     {//questions[3]
+        id: 'question_4',
         text: 'Question 4',
         type: 'checkbox',
         answers: [
             {//questions[3].answers[0]
+                id: 'answer1-4',
                 text: 'Answer 1',
                 value: 'A',
                 correct: true
             },
             {//questions[3].answers[1]
+                id: 'answer2-4',
                 text: 'Answer 2',
                 value: 'B',
                 correct: false
             },
             {//questions[3].answers[2]
+                id: 'answer3-4',
                 text: 'Answer 3',
                 value: 'C',
+                correct: false
+            },
+            {//questions[3].answers[3]
+                id: 'answer4-4',
+                text: 'Answer 4',
+                value: 'D',
+                correct: false
+            },
+            {//questions[3].answers[4]
+                id: 'answer5-4',
+                text: 'Answer 5',
+                value: 'E',
+                correct: false
+            },
+            {//questions[3].answers[5]
+                id: 'answer6-4',
+                text: 'Answer 6',
+                value: 'F',
                 correct: false
             }
         ]
     },
     {//questions[4]
+        id: 'question_5',
         text: 'Question 5',
         type: 'checkbox',
         answers: [
             {//questions[4].answers[0]
+                id: 'answer1-5',
                 text: 'Answer 1',
                 value: 'A',
                 correct: true
             },
             {//questions[4].answers[1]
+                id: 'answer2-5',
                 text: 'Answer 2',
                 value: 'B',
                 correct: false
             },
             {//questions[4].answers[2]
+                id: 'answer3-5',
                 text: 'Answer 3',
                 value: 'C',
+                correct: false
+            },
+            {//questions[4].answers[3]
+                id: 'answer4-5',
+                text: 'Answer 4',
+                value: 'D',
+                correct: false
+            },
+            {//questions[4].answers[4]
+                id: 'answer5-5',
+                text: 'Answer 5',
+                value: 'E',
+                correct: false
+            },
+            {//questions[4].answers[5]
+                id: 'answer6-5',
+                text: 'Answer 6',
+                value: 'F',
                 correct: false
             }
         ]
     },
     {//questions[5]
+        id: 'question_6',
         text: 'Question 6',
         type: 'radio',
         answers: [
             {//questions[5].answers[0]
-                id: 'answer1-1'
+                id: 'answer1-6',
                 text: 'Answer 1',
                 value: 'A',
                 correct: true
             },
             {//questions[5].answers[1]
+                id: 'answer2-6',
                 text: 'Answer 2',
                 value: 'B',
                 correct: false
             },
             {//questions[5].answers[2]
+                id: 'answer3-6',
                 text: 'Answer 3',
                 value: 'C',
                 correct: false
@@ -165,76 +206,112 @@ const questions = [
         ]
     }
 ];
-const container = $('section.live');
-const counter = 0;
+const correctAnswers = ['A'];
+const htmlStrings = questions.map(item => buildString(item));
+let counter = 0;
 
+function buildString(item) {
+    if (item.type === 'radio') {
+        return `
+        <form id="${item.id}">
+            <h2>${item.text}</h2>
+            <p>
+                <input type="${item.type}" id="${item.answers[0].id}" name="answers" value="${item.answers[0].value}" /><label for="${item.answers[0].id}">${item.answers[0].text}</label>
+            </p>
+            <p>
+                <input type="${item.type}" id="${item.answers[1].id}" name="answers" value="${item.answers[1].value}" /><label for="${item.answers[1].id}">${item.answers[1].text}</label>
+            </p>
+            <p>
+                <input type="${item.type}" id="${item.answers[2].id}" name="answers" value="${item.answers[2].value}" /><label for="${item.answers[2].id}">${item.answers[2].text}</label>
+            </p>
+            <button type="submit" class="js-submit current" disabled>Submit</button>
+        </form>
+        <div class="response">
+            <p class="verdict"></p>
+            <p class="info"></p>
+            <button type="button" class="js-next">Next</button>
+        </div>
+    `;
+    }
+    return `
+    <form id="${item.id}">
+        <h2>${item.text}</h2>
+        <p>
+            <input type="${item.type}" id="${item.answers[0].id}" name="answers" value="${item.answers[0].value}" /><label for="${item.answers[0].id}">${item.answers[0].text}</label>
+        </p>
+        <p>
+            <input type="${item.type}" id="${item.answers[1].id}" name="answers" value="${item.answers[1].value}" /><label for="${item.answers[1].id}">${item.answers[1].text}</label>
+        </p>
+        <p>
+            <input type="${item.type}" id="${item.answers[2].id}" name="answers" value="${item.answers[2].value}" /><label for="${item.answers[2].id}">${item.answers[2].text}</label>
+        </p>
+        <p>
+            <input type="${item.type}" id="${item.answers[3].id}" name="answers" value="${item.answers[3].value}" /><label for="${item.answers[3].id}">${item.answers[3].text}</label>
+        </p>
+        <p>
+            <input type="${item.type}" id="${item.answers[4].id}" name="answers" value="${item.answers[4].value}" /><label for="${item.answers[4].id}">${item.answers[4].text}</label>
+        </p>
+        <p>
+            <input type="${item.type}" id="${item.answers[5].id}" name="answers" value="${item.answers[5].value}" /><label for="${item.answers[5].id}">${item.answers[5].text}</label>
+        </p>
+        <button type="submit" class="js-submit" disabled>Submit</button>
+    </form>
+    `;
+}
+
+//Start Quiz
 function beginQuiz() {
-    //On click
-    //Remove .current from .landing
-    //Add class .current to .question
     container.on('click', '.landing > button', event => {
         $('.landing.current').removeClass('current');
         $('.question').addClass('current');
-        renderQuestion();
+        container.html(htmlStrings[0]);
     });
-
-}
-//Need to generate html that gets displayed in DOM
-function generateRadioQ(question) {
-    return `<form id="${question.id}">
-    <h2>${question.text}</h2>
-        <p>
-            <input type="${question.type}" name="answer" id="${question.answer[0].id}" value="${question.answer[0].value}"><label for="${question.answer[0].id}">${question.answer[0].text}</label>
-        </p>
-        <p>
-            <input type="${question.type}" name="answer" id="${question.answer[1].id}" value="${question.answer[1].value}"><label for="${question.answer[1].id}">${question.answer[1].text}</label>
-        </p>
-        <p>
-            <input type="${question.type}" name="answer" id="${question.answer[2].id}" value="${question.answer[2].value}"><label for="${question.answer[2].id}">${question.answer[2].text}</label>
-        </p>
-        <button type="submit" class="submit">Submit</button>
-    </form>`;
-}
-function generateCheckQ(question) {
-    return `<form id="${question.id}">
-    <h2>${question.text}</h2>
-        <p>
-            <input type="${question.type}" name="answer" id="${question.answer[0].id}" value="${question.answer[0].value}"><label for="${question.answer[0].id}">${question.answer[0].text}</label>
-        </p>
-        <p>
-            <input type="${question.type}" name="answer" id="${question.answer[1].id}" value="${question.answer[1].value}"><label for="${question.answer[1].id}">${question.answer[1].text}</label>
-        </p>
-        <p>
-            <input type="${question.type}" name="answer" id="${question.answer[2].id}" value="${question.answer[2].value}"><label for="${question.answer[2].id}">${question.answer[2].text}</label>
-        </p>
-        <p>
-            <input type="${question.type}" name="answer" id="${question.answer[3].id}" value="${question.answer[3].value}"><label for="${question.answer[3].id}">${question.answer[3].text}</label>
-        </p>
-        <p>
-            <input type="${question.type}" name="answer" id="${question.answer[4].id}" value="${question.answer[4].value}"><label for="${question.answer[4].id}">${question.answer[4]].text
-}</label >
-        </p >
-    <p>
-        <input type="${question.type}" name="answer" id="${question.answer[5].id}" value="${question.answer[5].value}"><label for="${question.answer[5].id}">${question.answer[5].text}</label>
-        </p>
-        <button type="submit" class="submit">Submit</button>
-    </form>`;
-}
-function filterQuestionType(question) {
-    const questionType = question.type;
-    questionType === 'radio' ? generateRadioQ(question) : generateCheck(question);
 }
 
-function generateQuestionString(qArray) {
-    const questionsHtml = qArray.map((question) => filterQuestionType(question));
-}
-
+//Rendering Questions
 function renderQuestion() {
-    //Sends html to DOM
-    container.html('<p>Hello</p>');
-}
+    //Render the html string to container in the DOM
+    console.log('renderQuestion ran');
+    container.html(htmlStrings[counter]);
 
+}
+//Submit Functions
+function handleSubmitToggle() {
+    container.on('change', 'input[name=answers]', event => {
+        $(event.currentTarget).parents('form').find('button.js-submit').prop('disabled', false);
+    })
+}
+function handleSubmitBtn() {
+    container.on('click', 'button.js-submit', event => {
+        event.preventDefault();
+        checkAnswer(event);
+        handleResponseToggle();
+
+    });
+}
+function checkAnswer(event) {
+    let userAnswer = $(event.currentTarget).siblings('p').find('input[name="answers"]:checked').val();
+    let rightAnswer = correctAnswers[counter];
+    if (userAnswer === rightAnswer) {
+        correctAnswerResponse();
+    } else {
+        wrongAnswerResponse();
+    }
+}
+function correctAnswerResponse() {
+    console.log('correctAnswerResponse ran');
+}
+function wrongAnswerResponse() {
+    console.log('wrongAnswerResponse ran');
+}
+function handleResponseToggle() {
+    $('button.js-submit.current').removeClass('current')
+    $('div.response').addClass('current');
+}
 function runQuizApp() {
     beginQuiz();
+    handleSubmitToggle();
+    handleSubmitBtn();
+
 }
 $(runQuizApp);
