@@ -27,7 +27,10 @@ body {
     clip: rect(0,0,0,0);
     border: 0;
   }
-/* Headings */
+.hidden {
+    display: none !important;
+}
+/* Typography */
 h1, h2, h3, h4 {
     line-height: 1;
 }
@@ -42,6 +45,10 @@ h3 {
 }
 h4 {
     font-size: 1.8rem;
+}
+
+p {
+    margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 992px) {
@@ -142,6 +149,7 @@ main {
 @media screen and (min-width: 768px) {}
 @media screen and (min-width: 992px) {}
 @media screen and (min-width: 1200px) {}
+    /* Landing */
 
 /* Section.Score */
 .score {

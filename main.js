@@ -187,6 +187,7 @@ function beginQuiz() {
         $('.landing.current').removeClass('current');
         $('.question').addClass('current');
         questionContainer.html(htmlStrings[0]);
+        renderScore();
     });
 }
 
@@ -240,6 +241,8 @@ function handleNextBtn() {
             renderResults();
         } else {
             renderQuestion(htmlStrings[counter]);
+
+            renderScore();
         }
     });
 }
@@ -260,7 +263,8 @@ function handleRestartButton() {
 //Score Section Functions
 function renderScore() {
     $('span.js-score').html(score);
-    $('span.js-total').html(htmlStrings.length)
+    $('span.js-total').html(htmlStrings.length);
+    $('section.score.hidden').removeClass('hidden');
 }
 function renderProDots() {
     const dotCount = htmlStrings.length;
@@ -278,6 +282,6 @@ function runQuizApp() {
     handleNextBtn();
     handleRestartButton();
     renderProDots();
-    renderScore();
+
 }
 $(runQuizApp);
