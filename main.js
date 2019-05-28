@@ -162,15 +162,21 @@ function buildString(item) {
     return `
             <form id="${item.id}">
                 <h2>${item.text}</h2>
-                <p>
-                    <input type="${item.type}" id="${item.answers[0].id}" name="answers" value="${item.answers[0].value}" /><label for="${item.answers[0].id}">${item.answers[0].text}</label>
-                </p>
-                <p>
-                    <input type="${item.type}" id="${item.answers[1].id}" name="answers" value="${item.answers[1].value}" /><label for="${item.answers[1].id}">${item.answers[1].text}</label>
-                </p>
-                <p>
-                    <input type="${item.type}" id="${item.answers[2].id}" name="answers" value="${item.answers[2].value}" /><label for="${item.answers[2].id}">${item.answers[2].text}</label>
-                </p>
+                <label class="option" for="${item.answers[0].id}">
+                    <input type="${item.type}" id="${item.answers[0].id}" name="answers" value="${item.answers[0].value}" />
+                    <span class="checkmark"></span>
+                    ${item.answers[0].text}
+                </label>
+                <label class="option" for="${item.answers[1].id}">
+                    <input type="${item.type}" id="${item.answers[1].id}" name="answers" value="${item.answers[1].value}" />
+                    <span class="checkmark"></span>
+                    ${item.answers[1].text}
+                </label>
+                <label class="option" for="${item.answers[2].id}">
+                    <input type="${item.type}" id="${item.answers[2].id}" name="answers" value="${item.answers[2].value}" />
+                    <span class="checkmark"></span>
+                    ${item.answers[2].text}
+                </label>
                 <button type="submit" class="secondary js-submit current" disabled>Submit</button>
             </form>
             <div class="response">
@@ -216,15 +222,21 @@ function handleSubmitBtn() {
     });
 }
 function checkAnswer(event) {
-    let userAnswer = $(event.currentTarget).siblings('p').find('input[name="answers"]:checked').val();
+    let userAnswer = $(event.currentTarget).siblings('label').find('input[name="answers"]:checked').val();
     let rightAnswer = correctAnswers[counter];
     if (userAnswer === rightAnswer) {
+        $('p.verdict').addClass('correct');
         correctAnswerResponse();
         score += 1;
         renderScore();
     } else {
+        $('p.verdict').addClass('wrong');
         wrongAnswerResponse();
     }
+}
+function clearVerdict() {
+    $('p.verdict.correct').removeClass('correct');
+    $('p.verdict.wrong').removeClass('wrong');
 }
 function correctAnswerResponse() {
     $('p.verdict').text('Correct');
@@ -243,6 +255,8 @@ function handleNextBtn() {
             renderQuestion(htmlStrings[counter]);
             showProgress(counter);
             renderScore();
+            renderCounter();
+            clearVerdict();
         }
     });
 }
@@ -251,6 +265,7 @@ function handleNextBtn() {
 function renderResults() {
     $('div.question.current').removeClass('current');
     $('div.results').addClass('current');
+    $('section.score').addClass('hidden');
 }
 
 //Restart Button Functions
@@ -259,7 +274,10 @@ function handleRestartButton() {
         location.reload();
     });
 }
-
+// Counter Section Functions
+function renderCounter() {
+    $('span.js-counter').html(counter + 1);
+}
 //Score Section Functions
 function renderScore() {
     $('span.js-score').html(score);

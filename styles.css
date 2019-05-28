@@ -13,9 +13,10 @@ body {
     height: 100vh;
     font-size: 1.6rem;
     line-height: 1.625;
-    background: #23648C; /* old browsers */
-    background: -webkit-linear-gradient(#23648C,#439FD9); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(#23648C,#439FD9);
+    font-family: 'Muli', sans-serif;
+    background: #439FD9; /* old browsers */
+    background: -webkit-linear-gradient(#439FD9,#85c4eb); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(#439FD9,#85c4eb);
     position: relative;
     
 }
@@ -54,16 +55,18 @@ h1, h2, h3, h4 {
     line-height: 1;
 }
 h1 {
-    font-size:3.2rem;
+    font-size:2.6rem;
+    font-family: 'Trade Winds', cursive;
+    color: #fff;
 }
 h2 {
-    font-size: 2.6rem;
-}
-h3 {
     font-size: 2.2rem;
 }
-h4 {
+h3 {
     font-size: 1.8rem;
+}
+h4 {
+    font-size: 1.6rem;
 }
 
 p {
@@ -109,6 +112,21 @@ p {
     color: #D94D1A;
 }
 
+/* Alerts */
+.verdict  {
+    padding: 0.5rem 1rem 0.8rem;
+    margin-top: 1.5rem;
+}
+.correct {
+    
+    background-color: #d4ffddda;
+    border: 1px solid #47aa5d;
+}
+.wrong {
+    
+    background-color: #f8ccbb;
+    border: 1px solid #D94D1A;
+}
 /* Buttons */
 button {
     background-color: #555;
@@ -142,6 +160,14 @@ button.secondary {
     background-color: #D94D1A;
     border: 1px solid #D94D1A;
 }
+button.secondary:focus, 
+button.secondary:hover {
+    background-color: #fc6d39;
+}
+button[disabled].secondary:focus, 
+button[disabled].secondary:hover {
+    background-color: #D94D1A;
+}
 @media screen and (min-width: 768px) {
     button {
         width: 20rem;
@@ -162,7 +188,7 @@ header {
 main {
     background-color: #ffffff;
     margin: 0 2rem;
-    padding: 2rem 0;
+    padding: 4rem 0;
     border-radius: 0.5rem;
     -moz-box-shadow:    0 3px 10px 6px #23648C;
     -webkit-box-shadow: 0 3px 10px 6px #23648C;
@@ -186,7 +212,6 @@ main {
 /* Section.Live */
 .live {
     margin-bottom: 2rem;
-    border-bottom: 2px solid #ccc;
 }
 .live fieldset {
     border: 0;
@@ -222,9 +247,14 @@ main {
     flex-wrap: wrap;
     justify-content: space-between;
     font-size: 1.4rem;
+    border-top: 2px solid #ccc;
+    padding-top: 2rem;
 }
 .score p:first-child {
     order: 2;
+}
+.score p {
+    margin-bottom: 0;
 }
 .score ul {
     order: 1;
@@ -244,7 +274,7 @@ main {
 
 }
 .score ul li.current:before {
-    background: #218838;
+    background: #23648C;
 
 }
 .score p:last-child {
