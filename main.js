@@ -178,7 +178,6 @@ function beginQuiz() {
         $('.landing.current').removeClass('current');
         $('.question').addClass('current');
         questionContainer.html(htmlStrings[0]);
-        autoFocus();
         renderScore();
     });
 }
@@ -190,11 +189,7 @@ function renderQuestion() {
     questionContainer.html(htmlStrings[counter]);
 
 }
-//Auto-Focus Functions
-function autoFocus() {
-    console.log('Autofocus ran');
-    $('.live form').find('label:nth-child(2)')
-}
+
 //Submit Functions
 function handleSubmitToggle() {
     container.on('change', 'input[name=answers]', event => {
@@ -244,7 +239,6 @@ function handleNextBtn() {
             renderResults();
         } else {
             renderQuestion(htmlStrings[counter]);
-            autoFocus();
             showProgress(counter);
             renderScore();
             renderCounter();
@@ -290,7 +284,6 @@ function showProgress() {
 }
 
 function runQuizApp() {
-    autoFocus();
     beginQuiz();
     handleSubmitToggle();
     handleSubmitBtn();
