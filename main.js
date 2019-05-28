@@ -171,12 +171,12 @@ function buildString(item) {
                 <p>
                     <input type="${item.type}" id="${item.answers[2].id}" name="answers" value="${item.answers[2].value}" /><label for="${item.answers[2].id}">${item.answers[2].text}</label>
                 </p>
-                <button type="submit" class="js-submit current" disabled>Submit</button>
+                <button type="submit" class="secondary js-submit current" disabled>Submit</button>
             </form>
             <div class="response">
                 <p class="verdict"></p>
                 <p class="info"></p>
-                <button type="button" class="js-next">Next</button>
+                <button type="button" class="primary js-next">Next</button>
             </div>
         `;
 }
@@ -241,7 +241,7 @@ function handleNextBtn() {
             renderResults();
         } else {
             renderQuestion(htmlStrings[counter]);
-
+            showProgress(counter);
             renderScore();
         }
     });
@@ -273,6 +273,10 @@ function renderProDots() {
         $('ul.progress').append('<li></li>');
         i++;
     }
+    $('ul.progress li:first-child').addClass('current');
+}
+function showProgress() {
+    $('ul.progress li.current').removeClass('current').next('li').addClass('current');
 }
 
 function runQuizApp() {
@@ -282,6 +286,5 @@ function runQuizApp() {
     handleNextBtn();
     handleRestartButton();
     renderProDots();
-
 }
 $(runQuizApp);
