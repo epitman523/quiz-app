@@ -61,6 +61,7 @@ h1 {
 }
 h2 {
     font-size: 2.2rem;
+    line-height: 1.6;
 }
 h3 {
     font-size: 1.8rem;
@@ -135,7 +136,7 @@ button {
     font-size: 1.8rem;
     letter-spacing: 0.1rem;
     width: 100%;
-    padding: 1rem 4rem;
+    padding: 1rem 2rem;
     border-radius: 0.5rem;
     margin-bottom: 2rem;
     display: block;
@@ -145,6 +146,10 @@ button {
 button[disabled] {
     opacity: 0.5;
     cursor: not-allowed;
+}
+button i {
+    font-size: 1.5rem;
+    vertical-align: 0.1rem;
 }
 button.primary {
     color: #ffffff;
@@ -213,6 +218,13 @@ main {
 .live {
     margin-bottom: 2rem;
 }
+.live form label {
+    display: block;
+    margin: 2rem 0;
+}
+.focus  {
+    border: 1px solid #ccc;
+}
 .live fieldset {
     border: 0;
 }
@@ -247,7 +259,7 @@ main {
     flex-wrap: wrap;
     justify-content: space-between;
     font-size: 1.4rem;
-    border-top: 2px solid #ccc;
+    border-top: 1px solid #ccc;
     padding-top: 2rem;
 }
 .score p:first-child {

@@ -7,148 +7,133 @@ const submitBtn = $('section.live div.question form button.js-submit');
 const questions = [
     {//questions[0]
         id: 'question_1',
-        text: 'Question 1',
+        text: 'What are the 3 basic guidelines to tornado safety',
         type: 'radio',
         answers: [
             {//questions[0].answers[0]
                 id: 'answer1-1',
-                text: 'Answer 1',
+                text: 'Get in, get down, cover up',
                 value: 'A'
             },
             {//questions[0].answers[1]
                 id: 'answer2-1',
-                text: 'Answer 2',
+                text: 'Get up, get down, get funky',
                 value: 'B'
             },
             {//questions[0].answers[2]
                 id: 'answer3-1',
-                text: 'Answer 3',
+                text: 'Go out, phone up, record',
                 value: 'C'
             }
         ]
     },
     {//questions[1]
         id: 'question_2',
-        text: 'Question 2',
+        text: 'Overall, where is the safest place to be during a tornado?',
         type: 'radio',
         answers: [
             {//questions[1].answers[0]
                 id: 'answer1-2',
-                text: 'Answer 1',
-                value: 'A',
-                correct: true
+                text: 'A trailor park',
+                value: 'A'
             },
             {//questions[1].answers[1]
                 id: 'answer2-2',
-                text: 'Answer 2',
-                value: 'B',
-                correct: false
+                text: 'Completely underground',
+                value: 'B'
             },
             {//questions[1].answers[2]
                 id: 'answer3-2',
-                text: 'Answer 3',
-                value: 'C',
-                correct: false
+                text: 'Highway overpass',
+                value: 'C'
             }
         ]
     },
     {//questions[2]
         id: 'question_3',
-        text: 'Question 3',
+        text: 'When staying in a hotel or motel, where is the safest place to go durning severe weather?',
         type: 'radio',
         answers: [
             {//questions[2].answers[0]
                 id: 'answer1-3',
-                text: 'Answer 1',
-                value: 'A',
-                correct: true
+                text: 'Hotel/Motel lobby',
+                value: 'A'
             },
             {//questions[2].answers[1]
                 id: 'answer2-3',
-                text: 'Answer 2',
-                value: 'B',
-                correct: false
+                text: 'Ride it out in the vehicle you arrived in',
+                value: 'B'
             },
             {//questions[2].answers[2]
                 id: 'answer3-3',
-                text: 'Answer 3',
-                value: 'C',
-                correct: false
+                text: 'Interior bathrooms or closets',
+                value: 'C'
             }
         ]
     },
     {//questions[3]
         id: 'question_4',
-        text: 'Question 4',
+        text: 'Which of these is NOT true when you encounter severe weather while on the road?',
         type: 'radio',
         answers: [
             {//questions[3].answers[0]
                 id: 'answer1-4',
-                text: 'Answer 1',
-                value: 'A',
-                correct: true
+                text: 'If you know there will be severe weather along your path of travel, drive really fast to get out ahead of the storm.',
+                value: 'A'
             },
             {//questions[3].answers[1]
                 id: 'answer2-4',
-                text: 'Answer 2',
-                value: 'B',
-                correct: false
+                text: 'Be familiar with area along your path of travel and know what county you are in. National Weather Service and severe weather warnings are on a county-by-county basis.',
+                value: 'B'
             },
             {//questions[3].answers[2]
                 id: 'answer3-4',
-                text: 'Answer 3',
-                value: 'C',
-                correct: false
+                text: 'Find a local radio station and listen to live updates.',
+                value: 'C'
             }
         ]
     },
     {//questions[4]
         id: 'question_5',
-        text: 'Question 5',
+        text: 'What should you NOT do when you get caught in a hailstorm while driving?',
         type: 'radio',
         answers: [
             {//questions[4].answers[0]
                 id: 'answer1-5',
-                text: 'Answer 1',
-                value: 'A',
-                correct: true
+                text: 'Get off the roadway and find shelter under an awning, carwash or other structure.',
+                value: 'A'
             },
             {//questions[4].answers[1]
                 id: 'answer2-5',
-                text: 'Answer 2',
-                value: 'B',
-                correct: false
+                text: 'Find a highway overpass or a bridge and park underneath.',
+                value: 'B'
             },
             {//questions[4].answers[2]
                 id: 'answer3-5',
-                text: 'Answer 3',
-                value: 'C',
-                correct: false
+                text: 'Leave your vehicle and get into a sturdy structure.',
+                value: 'C'
             }
         ]
     },
     {//questions[5]
         id: 'question_6',
-        text: 'Question 6',
+        text: 'Which is the best option if you experience a tornado while traveling on the road?',
         type: 'radio',
         answers: [
             {//questions[5].answers[0]
                 id: 'answer1-6',
-                text: 'Answer 1',
-                value: 'A',
-                correct: true
+                text: 'Try to outrun the tornado.',
+                value: 'A'
             },
             {//questions[5].answers[1]
                 id: 'answer2-6',
-                text: 'Answer 2',
-                value: 'B',
-                correct: false
+                text: 'Hide under a highway overpass.',
+                value: 'B'
             },
             {//questions[5].answers[2]
                 id: 'answer3-6',
-                text: 'Answer 3',
-                value: 'C',
-                correct: false
+                text: 'Find a substantial building for shelter.',
+                value: 'C'
             }
         ]
     }
@@ -163,17 +148,17 @@ function buildString(item) {
             <form id="${item.id}">
                 <h2>${item.text}</h2>
                 <label class="option" for="${item.answers[0].id}">
-                    <input type="${item.type}" id="${item.answers[0].id}" name="answers" value="${item.answers[0].value}" />
+                    <input tabindex="0" type="${item.type}" id="${item.answers[0].id}" name="answers" value="${item.answers[0].value}" />
                     <span class="checkmark"></span>
                     ${item.answers[0].text}
                 </label>
                 <label class="option" for="${item.answers[1].id}">
-                    <input type="${item.type}" id="${item.answers[1].id}" name="answers" value="${item.answers[1].value}" />
+                    <input tabindex="0" type="${item.type}" id="${item.answers[1].id}" name="answers" value="${item.answers[1].value}" />
                     <span class="checkmark"></span>
                     ${item.answers[1].text}
                 </label>
                 <label class="option" for="${item.answers[2].id}">
-                    <input type="${item.type}" id="${item.answers[2].id}" name="answers" value="${item.answers[2].value}" />
+                    <input tabindex="0" type="${item.type}" id="${item.answers[2].id}" name="answers" value="${item.answers[2].value}" />
                     <span class="checkmark"></span>
                     ${item.answers[2].text}
                 </label>
@@ -182,7 +167,7 @@ function buildString(item) {
             <div class="response">
                 <p class="verdict"></p>
                 <p class="info"></p>
-                <button type="button" class="primary js-next">Next</button>
+                <button type="button" class="primary js-next">Next <i class="fas fa-chevron-right"></i></button>
             </div>
         `;
 }
@@ -193,6 +178,7 @@ function beginQuiz() {
         $('.landing.current').removeClass('current');
         $('.question').addClass('current');
         questionContainer.html(htmlStrings[0]);
+        autoFocus();
         renderScore();
     });
 }
@@ -203,6 +189,11 @@ function renderQuestion() {
     console.log('renderQuestion ran');
     questionContainer.html(htmlStrings[counter]);
 
+}
+//Auto-Focus Functions
+function autoFocus() {
+    console.log('Autofocus ran');
+    $('.live form').find('label:nth-child(2)')
 }
 //Submit Functions
 function handleSubmitToggle() {
@@ -242,7 +233,7 @@ function correctAnswerResponse() {
     $('p.verdict').text('Correct');
 }
 function wrongAnswerResponse() {
-    $('p.verdict').text('Sorry, you answered incorrectly');
+    $('p.verdict').text('Incorrect');
 }
 
 //Next Button Functions
@@ -253,6 +244,7 @@ function handleNextBtn() {
             renderResults();
         } else {
             renderQuestion(htmlStrings[counter]);
+            autoFocus();
             showProgress(counter);
             renderScore();
             renderCounter();
@@ -298,6 +290,7 @@ function showProgress() {
 }
 
 function runQuizApp() {
+    autoFocus();
     beginQuiz();
     handleSubmitToggle();
     handleSubmitBtn();
