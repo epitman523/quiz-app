@@ -51,7 +51,7 @@ const questions = [
     },
     {//questions[2]
         id: 'question_3',
-        text: 'When staying in a hotel or motel, where is the safest place to go durning severe weather?',
+        text: 'When staying in a hotel or motel, where is the safest place to go during severe weather?',
         type: 'radio',
         answers: [
             {//questions[2].answers[0]
@@ -228,7 +228,7 @@ function correctAnswerResponse() {
     $('p.verdict').text('Correct');
 }
 function wrongAnswerResponse() {
-    $('p.verdict').text('Incorrect');
+    $('p.verdict').text('Incorrect, the correct answer is ' + correctAnswers[counter]);
 }
 
 //Next Button Functions
