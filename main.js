@@ -162,12 +162,12 @@ function buildString(item) {
                     <span class="checkmark"></span>
                     ${item.answers[2].text}
                 </label>
-                <button type="submit" class="secondary js-submit current" disabled>Submit</button>
+                <button type="submit" class="secondary js-submit current" form="${item.id}" name="submit" disabled>Submit</button>
             </form>
             <div class="response">
                 <p class="verdict"></p>
                 <p class="info"></p>
-                <button type="button" class="primary js-next">Next <i class="fas fa-chevron-right"></i></button>
+                <button type="button" class="primary js-next" name="Next">Next <i class="fas fa-chevron-right"></i></button>
             </div>
         `;
 }
