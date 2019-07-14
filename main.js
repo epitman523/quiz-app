@@ -12,17 +12,17 @@ const questions = [
         answers: [
             {//questions[0].answers[0]
                 id: 'answer1-1',
-                text: 'Get in, get down, cover up',
+                text: 'A. Get in, get down, cover up',
                 value: 'A'
             },
             {//questions[0].answers[1]
                 id: 'answer2-1',
-                text: 'Get up, get down, get funky',
+                text: 'B. Get up, get down, get funky',
                 value: 'B'
             },
             {//questions[0].answers[2]
                 id: 'answer3-1',
-                text: 'Go out, phone up, record',
+                text: 'C. Go out, phone up, record',
                 value: 'C'
             }
         ]
@@ -34,17 +34,17 @@ const questions = [
         answers: [
             {//questions[1].answers[0]
                 id: 'answer1-2',
-                text: 'A trailor park',
+                text: 'A. A trailor park',
                 value: 'A'
             },
             {//questions[1].answers[1]
                 id: 'answer2-2',
-                text: 'Completely underground',
+                text: 'B. Completely underground',
                 value: 'B'
             },
             {//questions[1].answers[2]
                 id: 'answer3-2',
-                text: 'Highway overpass',
+                text: 'C. Highway overpass',
                 value: 'C'
             }
         ]
@@ -56,17 +56,17 @@ const questions = [
         answers: [
             {//questions[2].answers[0]
                 id: 'answer1-3',
-                text: 'Hotel/Motel lobby',
+                text: 'A. Hotel/Motel lobby',
                 value: 'A'
             },
             {//questions[2].answers[1]
                 id: 'answer2-3',
-                text: 'Ride it out in the vehicle you arrived in',
+                text: 'B. Ride it out in the vehicle you arrived in',
                 value: 'B'
             },
             {//questions[2].answers[2]
                 id: 'answer3-3',
-                text: 'Interior bathrooms or closets',
+                text: 'C. Interior bathrooms or closets',
                 value: 'C'
             }
         ]
@@ -78,17 +78,17 @@ const questions = [
         answers: [
             {//questions[3].answers[0]
                 id: 'answer1-4',
-                text: 'If you know there will be severe weather along your path of travel, drive really fast to get out ahead of the storm.',
+                text: 'A. If you know there will be severe weather along your path of travel, drive really fast to get out ahead of the storm.',
                 value: 'A'
             },
             {//questions[3].answers[1]
                 id: 'answer2-4',
-                text: 'Be familiar with area along your path of travel and know what county you are in. National Weather Service and severe weather warnings are on a county-by-county basis.',
+                text: 'B. Be familiar with area along your path of travel and know what county you are in. National Weather Service and severe weather warnings are on a county-by-county basis.',
                 value: 'B'
             },
             {//questions[3].answers[2]
                 id: 'answer3-4',
-                text: 'Find a local radio station and listen to live updates.',
+                text: 'C. Find a local radio station and listen to live updates.',
                 value: 'C'
             }
         ]
@@ -100,17 +100,17 @@ const questions = [
         answers: [
             {//questions[4].answers[0]
                 id: 'answer1-5',
-                text: 'Get off the roadway and find shelter under an awning, carwash or other structure.',
+                text: 'A. Get off the roadway and find shelter under an awning, carwash or other structure.',
                 value: 'A'
             },
             {//questions[4].answers[1]
                 id: 'answer2-5',
-                text: 'Find a highway overpass or a bridge and park underneath.',
+                text: 'B. Find a highway overpass or a bridge and park underneath.',
                 value: 'B'
             },
             {//questions[4].answers[2]
                 id: 'answer3-5',
-                text: 'Leave your vehicle and get into a sturdy structure.',
+                text: 'C. Leave your vehicle and get into a sturdy structure.',
                 value: 'C'
             }
         ]
@@ -122,23 +122,29 @@ const questions = [
         answers: [
             {//questions[5].answers[0]
                 id: 'answer1-6',
-                text: 'Try to outrun the tornado.',
+                text: 'A. Try to outrun the tornado.',
                 value: 'A'
             },
             {//questions[5].answers[1]
                 id: 'answer2-6',
-                text: 'Hide under a highway overpass.',
+                text: 'B. Hide under a highway overpass.',
                 value: 'B'
             },
             {//questions[5].answers[2]
                 id: 'answer3-6',
-                text: 'Find a substantial building for shelter.',
+                text: 'C. Find a substantial building for shelter.',
                 value: 'C'
             }
         ]
     }
 ];
 const correctAnswers = ['A', 'B', 'C', 'A', 'B', 'C'];
+const answerInfo = ['Whether you\'re home or traveling, your best bet is follow these simple rules: Get inside a sturdy structure, get underground or to the lowest floor and to protect yourself from flying debris by using a blanket, pillow, etc.',
+    'Being completely underground is the safest place to be during a tornado. Structures without solid bases or that are not anchored to the ground can be picked up and destroyed by fast winds. Highway underpasses are an extremely dangerous place to ride out a tornado.',
+    'Similar to being at home, if you can\'t get underground then the next best place is an interior bathroom or closet. The less windows the better.',
+    'If you know there is going to be bad weather along your route, then consider delaying your travel plans until the weather passes. It is better to arrive late then to not arrive at all.',
+    'You do not want to park on roads that have traffic. It can cause traffic jams and make an already dangerous situation worse.',
+    'Never try to outrun a tornado, they are unpredictable and your path of travel might not be clear enough for you to get away. And again, stay away from the overpasses.']
 const htmlStrings = questions.map(item => buildString(item));
 let counter = 0;
 let score = 0;
@@ -213,11 +219,13 @@ function checkAnswer(event) {
     if (userAnswer === rightAnswer) {
         $('p.verdict').addClass('correct');
         correctAnswerResponse();
+        questionInfoResponse();
         score += 1;
         renderScore();
     } else {
         $('p.verdict').addClass('wrong');
         wrongAnswerResponse();
+        questionInfoResponse();
     }
 }
 function clearVerdict() {
@@ -229,6 +237,9 @@ function correctAnswerResponse() {
 }
 function wrongAnswerResponse() {
     $('p.verdict').text('Incorrect, the correct answer is ' + correctAnswers[counter]);
+}
+function questionInfoResponse() {
+    $('p.info').text(answerInfo[counter]);
 }
 
 //Next Button Functions
